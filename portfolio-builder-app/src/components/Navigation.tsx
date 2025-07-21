@@ -50,15 +50,6 @@ const Navigation = () => {
           ))}
           <li className="nav-item">
             <Link
-              to="/editor"
-              className={`nav-link ${location.pathname.startsWith('/editor') ? 'active' : ''}`}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Editor
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
               to="/preview"
               className={`nav-link ${location.pathname === '/preview' ? 'active' : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}

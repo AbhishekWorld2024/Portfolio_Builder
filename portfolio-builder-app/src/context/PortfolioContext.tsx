@@ -152,10 +152,15 @@ export const PortfolioProvider = ({ children }: PortfolioProviderProps) => {
       ...project,
       id: Date.now().toString()
     }
-    setPortfolioData(prev => ({
-      ...prev,
-      projects: [...prev.projects, newProject]
-    }))
+    console.log('Adding project:', newProject)
+    setPortfolioData(prev => {
+      const updated = {
+        ...prev,
+        projects: [...prev.projects, newProject]
+      }
+      console.log('Updated projects array:', updated.projects)
+      return updated
+    })
   }
 
   const removeProject = (id: string) => {
@@ -170,10 +175,15 @@ export const PortfolioProvider = ({ children }: PortfolioProviderProps) => {
       ...work,
       id: Date.now().toString()
     }
-    setPortfolioData(prev => ({
-      ...prev,
-      workExperience: [...prev.workExperience, newWork]
-    }))
+    console.log('Adding work experience:', newWork)
+    setPortfolioData(prev => {
+      const updated = {
+        ...prev,
+        workExperience: [...prev.workExperience, newWork]
+      }
+      console.log('Updated work experience array:', updated.workExperience)
+      return updated
+    })
   }
 
   const removeWorkExperience = (id: string) => {

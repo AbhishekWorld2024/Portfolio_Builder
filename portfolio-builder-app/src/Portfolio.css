@@ -14,6 +14,8 @@
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
   --border-radius: 8px;
   --transition: all 0.3s ease;
 }
@@ -197,9 +199,9 @@ body {
 }
 
 .btn-primary:hover {
-  background: var(--bg-secondary);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  background: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .btn-secondary {
@@ -209,8 +211,10 @@ body {
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
 
 .social-links {
@@ -361,12 +365,30 @@ body {
   overflow: hidden;
   box-shadow: var(--shadow);
   border: 1px solid var(--border-color);
-  transition: var(--transition);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-accent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.project-card:hover::before {
+  opacity: 0.05;
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 .project-image {
@@ -522,8 +544,8 @@ body {
 }
 
 .certification-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .certification-icon {
@@ -960,4 +982,149 @@ body {
 
 .gap-2 {
   gap: 1rem;
+}
+
+/* Floating Editor Button */
+.floating-editor-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--gradient);
+  color: white;
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  z-index: 999;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.floating-editor-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  color: white;
+  background: var(--gradient-secondary);
+}
+
+.floating-editor-btn span:first-child {
+  font-size: 1.2rem;
+}
+
+.floating-editor-btn span:last-child {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .floating-editor-btn {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.75rem 1rem;
+  }
+  
+  .floating-editor-btn span:last-child {
+    display: none;
+  }
+}
+
+/* Enhanced Animations */
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in-bottom {
+  animation: slideInFromBottom 0.8s ease-out;
+}
+
+/* Enhanced Section Styling */
+.section {
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 0%, rgba(102, 126, 234, 0.02) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Enhanced Form Styling */
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Enhanced Button Animations */
+.btn-add:hover {
+  background: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn-export:hover {
+  background: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Enhanced Typography */
+.hero-title {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+}
+
+.section-title {
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Enhanced Experience Timeline */
+.experience-item:hover .experience-content {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.experience-content {
+  transition: all 0.3s ease;
+}
+
+/* Enhanced Skill Tags */
+.skill-tag:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tech-tag:hover {
+  background: var(--secondary-color);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }

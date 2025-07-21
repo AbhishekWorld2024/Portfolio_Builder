@@ -10,6 +10,7 @@ import Certifications from './components/Certifications'
 import Contact from './components/Contact'
 import Editor from './components/Editor'
 import Preview from './components/Preview'
+import FloatingEditorButton from './components/FloatingEditorButton'
 import './Portfolio.css'
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           </Routes>
         </main>
       </div>
+      <FloatingEditorButton />
     </PortfolioProvider>
   )
 }
